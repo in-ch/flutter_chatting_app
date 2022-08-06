@@ -1,7 +1,9 @@
+import 'package:chatting_app/helper/helper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:chatting_app/pages/pages.dart';
+import 'package:chatting_app/widgets/widgets.dart';
 import 'package:chatting_app/style/theme.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -40,6 +42,21 @@ class HomeScreen extends StatelessWidget {
                     const TextStyle(fontWeight: FontWeight.bold, fontSize: 16));
           },
         ),
+        leadingWidth: 54,
+        leading: Align(
+          alignment: Alignment.centerRight,
+          child: IconBackground(
+              icon: Icons.search,
+              onTap: () {
+                print('TODO search');
+              }),
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 24.0),
+            child: Avatar.small(url: Helpers.randomPictureUrl()),
+          )
+        ],
       ),
       body: ValueListenableBuilder(
           valueListenable: pageIndex,

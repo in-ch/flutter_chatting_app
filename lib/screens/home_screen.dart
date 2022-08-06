@@ -1,10 +1,8 @@
-import 'package:chatting_app/pages/calls_page.dart';
-import 'package:chatting_app/pages/contacts_page.dart';
-import 'package:chatting_app/pages/messages_page.dart';
-import 'package:chatting_app/pages/notifications_page.dart';
-import 'package:chatting_app/style/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'package:chatting_app/pages/pages.dart';
+import 'package:chatting_app/style/theme.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);

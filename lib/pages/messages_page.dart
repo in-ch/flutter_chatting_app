@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:faker/faker.dart';
 import 'package:jiffy/jiffy.dart';
 
-import 'package:chatting_app/helper/helper.dart';
+import 'package:chatting_app/screens/screens.dart';
 import 'package:chatting_app/models/message_data.dart';
 import 'package:chatting_app/models/story_data.dart';
 import 'package:chatting_app/style/theme.dart';
 import 'package:chatting_app/widgets/avatar.dart';
+import 'package:chatting_app/helper/helper.dart';
 
 class MessagesPage extends StatelessWidget {
   const MessagesPage({Key? key}) : super(key: key);
@@ -52,7 +53,7 @@ class _MessageTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        // Navigator.of(context).push(ChatScreen.route(messageData));
+        Navigator.of(context).push(ChatScreen.route(messageData));
       },
       child: Container(
         height: 100,

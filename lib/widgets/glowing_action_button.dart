@@ -7,12 +7,14 @@ class GlowingActionButton extends StatelessWidget {
     required this.color,
     required this.icon,
     this.size = 54,
+    this.iconSize = 26,
     required this.onPressed,
   }) : super(key: key);
 
   final Color color;
   final IconData icon;
   final double size;
+  final double iconSize;
   final VoidCallback onPressed;
 
   @override
@@ -40,7 +42,7 @@ class GlowingActionButton extends StatelessWidget {
               height: size,
               child: Icon(
                 icon,
-                size: 26,
+                size: iconSize,
                 color: Colors.white,
               ),
             ),

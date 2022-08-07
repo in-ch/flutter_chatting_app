@@ -32,14 +32,17 @@ class HomeScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        iconTheme: Theme.of(context).iconTheme,
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: ValueListenableBuilder(
           valueListenable: title,
           builder: (BuildContext context, String value, _) {
             return Text(value,
-                style:
-                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 16));
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                ));
           },
         ),
         leadingWidth: 54,
@@ -94,37 +97,45 @@ class _BottomNavigationBarState extends State<_BottomNavigationBar> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      top: false,
-      bottom: true,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          _NavigationBarItems(
-              index: 0,
-              onTap: handleItemSelected,
-              isSelected: (selectedIndex == 0),
-              lable: 'Messages',
-              icon: CupertinoIcons.bubble_left_bubble_right_fill),
-          _NavigationBarItems(
-              index: 1,
-              onTap: handleItemSelected,
-              isSelected: (selectedIndex == 1),
-              lable: 'Notifications',
-              icon: CupertinoIcons.bell_solid),
-          _NavigationBarItems(
-              index: 2,
-              onTap: handleItemSelected,
-              isSelected: (selectedIndex == 2),
-              lable: 'Calls',
-              icon: CupertinoIcons.phone_fill),
-          _NavigationBarItems(
-              index: 3,
-              onTap: handleItemSelected,
-              isSelected: (selectedIndex == 3),
-              lable: 'Contacts',
-              icon: CupertinoIcons.person_2_fill),
-        ],
+    final brightness = Theme.of(context).brightness;
+    return Card(
+      color: (brightness == Brightness.light)
+          ? const Color.fromARGB(0, 0, 0, 0)
+          : Colors.red,
+      elevation: 0,
+      margin: const EdgeInsets.all(0),
+      child: SafeArea(
+        top: false,
+        bottom: true,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            _NavigationBarItems(
+                index: 0,
+                onTap: handleItemSelected,
+                isSelected: (selectedIndex == 0),
+                lable: 'Messages',
+                icon: CupertinoIcons.bubble_left_bubble_right_fill),
+            _NavigationBarItems(
+                index: 1,
+                onTap: handleItemSelected,
+                isSelected: (selectedIndex == 1),
+                lable: 'Notifications',
+                icon: CupertinoIcons.bell_solid),
+            _NavigationBarItems(
+                index: 2,
+                onTap: handleItemSelected,
+                isSelected: (selectedIndex == 2),
+                lable: 'Calls',
+                icon: CupertinoIcons.phone_fill),
+            _NavigationBarItems(
+                index: 3,
+                onTap: handleItemSelected,
+                isSelected: (selectedIndex == 3),
+                lable: 'Contacts',
+                icon: CupertinoIcons.person_2_fill),
+          ],
+        ),
       ),
     );
   }
@@ -158,8 +169,11 @@ class _NavigationBarItems extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(icon,
-                size: 20, color: isSelected ? AppColors.secondary : null),
+            Padding(
+              padding: const EdgeInsets.only(top: 8.0),
+              child: Icon(icon,
+                  size: 20, color: isSelected ? AppColors.secondary : null),
+            ),
             const SizedBox(height: 8),
             Text(lable,
                 style: isSelected

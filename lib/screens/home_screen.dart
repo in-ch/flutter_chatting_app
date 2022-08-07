@@ -19,7 +19,7 @@ class HomeScreen extends StatelessWidget {
     ContactsPage(),
   ];
 
-  final pageTitles = const ['Messages', 'Notifications', 'Calls', 'Contacts'];
+  final pageTitles = const ['메시지', '알림', '전화 목록', '연락처'];
 
   void _onNavigationItemSelected(index) {
     title.value = pageTitles[index];
@@ -114,25 +114,32 @@ class _BottomNavigationBarState extends State<_BottomNavigationBar> {
                 index: 0,
                 onTap: handleItemSelected,
                 isSelected: (selectedIndex == 0),
-                lable: 'Messages',
+                lable: '메시지',
                 icon: CupertinoIcons.bubble_left_bubble_right_fill),
             _NavigationBarItems(
                 index: 1,
                 onTap: handleItemSelected,
                 isSelected: (selectedIndex == 1),
-                lable: 'Notifications',
+                lable: '알림',
                 icon: CupertinoIcons.bell_solid),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: GlowingActionButton(
+                  color: AppColors.secondary,
+                  icon: CupertinoIcons.add,
+                  onPressed: () {}),
+            ),
             _NavigationBarItems(
                 index: 2,
                 onTap: handleItemSelected,
                 isSelected: (selectedIndex == 2),
-                lable: 'Calls',
+                lable: '전화목록',
                 icon: CupertinoIcons.phone_fill),
             _NavigationBarItems(
                 index: 3,
                 onTap: handleItemSelected,
                 isSelected: (selectedIndex == 3),
-                lable: 'Contacts',
+                lable: '연락처',
                 icon: CupertinoIcons.person_2_fill),
           ],
         ),
@@ -165,23 +172,24 @@ class _NavigationBarItems extends StatelessWidget {
         onTap(index);
       },
       child: SizedBox(
-        height: 70.0,
+        width: 70.0,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             Padding(
               padding: const EdgeInsets.only(top: 8.0),
               child: Icon(icon,
-                  size: 20, color: isSelected ? AppColors.secondary : null),
+                  size: isSelected ? 24 : 18,
+                  color: isSelected ? AppColors.secondary : null),
             ),
-            const SizedBox(height: 8),
+            const SizedBox(height: 10),
             Text(lable,
                 style: isSelected
                     ? const TextStyle(
                         fontSize: 11,
                         fontWeight: FontWeight.bold,
                         color: AppColors.secondary)
-                    : const TextStyle(fontSize: 11)),
+                    : const TextStyle(fontSize: 10)),
           ],
         ),
       ),
